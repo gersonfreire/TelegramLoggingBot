@@ -5,6 +5,13 @@ import time
 # reload(sys)
 # sys.setdefaultencoding("utf-8")
 
+# from dotenv import load_dotenv
+# https://dev.to/poojaghodmode/telebot-using-python-3akh
+# AUTH_TOKEN = 'YOUR_TOKEN'
+# .env
+# load_dotenv()
+# token = os.getenv('AUT_TOKEN')
+
 print( "[System] Bot has started.")
 
 user = [line.rstrip('\n') for line in open('user.txt','rt')]
@@ -15,6 +22,8 @@ import random
 import json
 import time
 from pprint import pprint
+
+import logging
 
 API_TOKEN = 'YOUR TOKEN' 
 YOUR_DEBUG_ID = 1111111
@@ -27,6 +36,13 @@ bot = telebot.TeleBot(API_TOKEN)
 
 with open('loggingids.json') as f:
     loggingIDs = json.load(f)
+    
+# 'TeleBot' object has no attribute 'message_handler
+# https://stackoverflow.com/questions/64951712/telebot-object-has-no-attribute-message-handler
+# pip3 uninstall telebot
+# pip3 uninstall PyTelegramBotAPI
+# pip3 install pyTelegramBotAPI
+# pip3 install --upgrade pyTelegramBotAPI
 
 @bot.message_handler(func=lambda m: True, content_types=['new_chat_participant'])
 def on_user_joins(m):
@@ -120,5 +136,6 @@ def id(m):
 		
 bot.set_update_listener(handle_messages)
 
-bot.polling(none_stop=True, interval=0, timeout=3)
+# bot.polling(none_stop=True, interval=0, timeout=3)
+bot.infinity_polling(timeout=10, logger_level=logging.DEBUG)
 

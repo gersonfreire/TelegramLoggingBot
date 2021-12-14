@@ -17,6 +17,7 @@ import time
 from pprint import pprint
 
 API_TOKEN = 'YOUR TOKEN'
+YOUR_DEBUG_ID = 1111111
 
 bot = telebot.TeleBot(API_TOKEN)
 
@@ -40,7 +41,7 @@ def on_user_joins(m):
 			username = m.new_chat_participant.username
 			groupname = m.chat.title
 			groupid = m.chat.id
-			bot.send_message(YOUR DEBUG ID, "# DEBUG # " + "Bot got invited to the group " + str(groupname) + "(" + str(groupid) + ")", parse_mode="HTML")
+			bot.send_message(YOUR_DEBUG_ID, "# DEBUG # " + "Bot got invited to the group " + str(groupname) + "(" + str(groupid) + ")", parse_mode="HTML")
 
 
 
@@ -48,14 +49,14 @@ def on_user_joins(m):
 def yes(m):
 	cid = m.chat.id
 	user = m.from_user.first_name
-	bot.send_message(YOUR DEBUG ID, str(user)  + " had Problems in setting up." , parse_mode="Markdown")
+	bot.send_message(YOUR_DEBUG_ID, str(user)  + " had Problems in setting up." , parse_mode="Markdown")
 	bot.send_message(cid, "Thank you very much for making our Bot better!")
 	
 @bot.message_handler(commands=['no'])
 def no(m):
 	cid = m.chat.id
 	user = m.from_user.first_name
-	bot.send_message(YOUR DEBUG ID, str(user) + " had no Problems in setting the Bot up." , parse_mode="Markdown")
+	bot.send_message(YOUR_DEBUG_ID, str(user) + " had no Problems in setting the Bot up." , parse_mode="Markdown")
 	bot.send_message(cid, "Thank you very much for making our Bot better!")
 
 @bot.message_handler(commands=['credits'])
@@ -110,7 +111,7 @@ def id(m):
         bot.send_message( cid, "This feature is only in group chats available!")
     else:
         bot.send_message( cid, "Hi %s , The group ID is %s.\nUse it to setup a logging group!" %(m.from_user.first_name, cid))
-        print() "ID command received")
+        print( "ID command received")
 
 		
 bot.set_update_listener(handle_messages)

@@ -1,6 +1,8 @@
 # TelegramLoggingBot
 This Bot is written in Python with the help from the pyTelegramBotAPI.
 
+Forked from https://github.com/SEEDTEAM/TelegramLoggingBot
+
 Test it at our official Telegram Bot:
 [@IchLoggeBot](https://telegram.me/IchLoggeBot)
 

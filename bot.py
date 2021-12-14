@@ -2,10 +2,10 @@
 #-*- coding:utf-8 -*-
 import sys
 import time
-reload(sys)
-sys.setdefaultencoding("utf-8")
+# reload(sys)
+# sys.setdefaultencoding("utf-8")
 
-print "[System] Bot has started."
+print( "[System] Bot has started.")
 
 user = [line.rstrip('\n') for line in open('user.txt','rt')]
 
@@ -35,7 +35,7 @@ def on_user_joins(m):
 				with open('user.txt', 'a') as f:
 					f.write(str(cid)+"\n")
 			bot.send_message(cid, "WOAAH! That was a very fast transport! 😨\nHi! My Name is Logging Bot clone! \n" + str(inviter) + " has invited me into this group!\n\nIf you want to Setup me type /setup into the Chat.\nI will try to bridge all your messages to another group! 😉\nIf you want to see all the cute guys behind the Bot type /credits 😇")
-			print "New group received."
+			print ("New group received.")
 			userwhogotadded = m.new_chat_participant.first_name
 			username = m.new_chat_participant.username
 			groupname = m.chat.title
@@ -110,7 +110,7 @@ def id(m):
         bot.send_message( cid, "This feature is only in group chats available!")
     else:
         bot.send_message( cid, "Hi %s , The group ID is %s.\nUse it to setup a logging group!" %(m.from_user.first_name, cid))
-        print "ID command received"
+        print() "ID command received")
 
 		
 bot.set_update_listener(handle_messages)

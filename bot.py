@@ -16,8 +16,12 @@ import json
 import time
 from pprint import pprint
 
-API_TOKEN = 'YOUR TOKEN'
+API_TOKEN = 'YOUR TOKEN' 
 YOUR_DEBUG_ID = 1111111
+
+if len(sys.argv) > 0:
+    API_TOKEN = sys.argv[1]
+    YOUR_DEBUG_ID = sys.argv[2]
 
 bot = telebot.TeleBot(API_TOKEN)
 
